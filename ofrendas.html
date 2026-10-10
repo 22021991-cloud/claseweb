@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Día de Muertos | La Ofrenda</title>
+
+    <style>
+
+        /* =========================
+           COLORES PRINCIPALES
+        ========================= */
+
+        :root {
+            --negro: #171014;
+            --vino: #651d2a;
+            --naranja: #e87924;
+            --amarillo: #f4c542;
+            --crema: #fff3d6;
+            --rosa: #c64b5f;
+            --verde: #536b3f;
+            --blanco: #ffffff;
+
+            --sombra: 0 10px 30px rgba(0,0,0,0.22);
+        }
+
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--negro);
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(244,197,66,0.12) 0 2px,
+                    transparent 3px
+                ),
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(200,75,95,0.10) 0 2px,
+                    transparent 3px
+                ),
+                var(--crema);
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        header {
+            min-height: 92vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 70px 20px;
+
+            color: white;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(23,16,20,0.72),
+                    rgba(101,29,42,0.78)
+                ),
+                url(portada.jpg") center / cover;
+        }
+
+
+        /* Marco decorativo */
+
+        header::after {
+            content: "";
+
+            position: absolute;
+            inset: 18px;
+
+            border: 2px solid rgba(244,197,66,0.65);
+
+            pointer-events: none;
+        }
+
+
+        .hero {
+            max-width: 900px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .eyebrow {
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+            color: #ffd76a;
+
+            font-size: 0.85rem;
+
+            font-weight: bold;
+        }
+
+
+        h1 {
+            font-size: clamp(4rem, 11vw, 8.5rem);
+
+            line-height: 0.85;
+
+            margin: 20px 0;
+
+            text-shadow:
+                4px 5px 0 #651d2a,
+                0 12px 25px rgba(0,0,0,0.4);
+        }
+
+
+        .hero p {
+            font-size: 1.25rem;
+
+            max-width: 680px;
+
+            margin: 25px auto;
+        }
+
+
+        /* Botón */
+
+        .btn {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            padding: 13px 25px;
+
+            border-radius: 30px;
+
+            background: var(--amarillo);
+
+            color: var(--negro);
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            box-shadow: var(--sombra);
+
+            transition: 0.25s;
+        }
+
+
+        .btn:hover {
+            transform: translateY(-3px);
+
+            background: #ffd966;
+        }
+
+
+        /* =========================
+           BARRA DE NAVEGACIÓN
+        ========================= */
+
+        nav {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 20;
+
+            background: rgba(23,16,20,0.96);
+
+            padding: 12px;
+
+            text-align: center;
+
+            border-bottom: 3px solid var(--amarillo);
+        }
+
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            margin: 0 12px;
+
+            font-weight: bold;
+
+            font-size: 0.92rem;
+        }
+
+
+        nav a:hover {
+            color: var(--amarillo);
+        }
+
+
+        /* =========================
+           PAPEL PICADO DECORATIVO
+        ========================= */
+
+        .papel {
+            height: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    transparent 8px,
+                    var(--naranja) 9px,
+                    var(--naranja) 16px,
+                    transparent 17px
+                ) 0 0 / 28px 25px,
+
+                linear-gradient(
+                    45deg,
+                    transparent 8px,
+                    var(--rosa) 9px,
+                    var(--rosa) 16px,
+                    transparent 17px
+                ) 14px 0 / 28px 25px;
+        }
+
+
+        /* =========================
+           CONTENIDO
+        ========================= */
+
+        main {
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding: 70px 20px;
+        }
+
+
+        section {
+            margin-bottom: 90px;
+        }
+
+
+        /* Títulos */
+
+        .titulo {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+
+        .titulo span {
+            color: var(--naranja);
+
+            font-size: 2.3rem;
+        }
+
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+
+            color: var(--vino);
+
+            margin: 5px 0 10px;
+        }
+
+
+        h3 {
+            color: var(--vino);
+        }
+
+
+        /* =========================
+           SECCIONES DE INFORMACIÓN
+        ========================= */
+
+        .intro {
+            display: grid;
+
+            grid-template-columns: 1.1fr 0.9fr;
+
+            gap: 35px;
+
+            align-items: center;
+        }
+
+
+        /* Tarjeta con imagen */
+
+        .card-img {
+            min-height: 300px;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            box-shadow: var(--sombra);
+
+            background: #ddd;
+        }
+
+
+        .card-img img {
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 300px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* Tarjeta de texto */
+
+        .text-card {
+            background: white;
+
+            padding: 32px;
+
+            border-left: 7px solid var(--naranja);
+
+            border-radius: 0 18px 18px 0;
+
+            box-shadow: var(--sombra);
+        }
+
+
+        /* =========================
+           ELEMENTOS DE LA OFRENDA
+        ========================= */
+
+        .elementos {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .elemento {
+            background: white;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow: var(--sombra);
+
+            transition: 0.25s;
+        }
+
+
+        .elemento:hover {
+            transform: translateY(-7px);
+        }
+
+
+        .elemento img {
+            width: 100%;
+
+            height: 190px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .elemento .contenido {
+            padding: 20px;
+        }
+
+
+        /* Número de cada elemento */
+
+        .numero {
+            display: inline-flex;
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: var(--vino);
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           NIVELES DE LA OFRENDA
+        ========================= */
+
+        .niveles {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .nivel {
+            padding: 28px;
+
+            background: var(--vino);
+
+            color: white;
+
+            border-radius: 18px;
+
+            box-shadow: var(--sombra);
+
+            text-align: center;
+        }
+
+
+        .nivel h3 {
+            color: white;
+        }
+
+
+        .nivel:nth-child(2) {
+            background: var(--naranja);
+        }
+
+
+        .nivel:nth-child(3) {
+            background: var(--verde);
+        }
+
+
+        /* =========================
+           GALERÍA
+        ========================= */
+
+        .galeria {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .galeria img {
+            width: 100%;
+
+            height: 210px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.18);
+
+            transition: 0.25s;
+        }
+
+
+        .galeria img:hover {
+            transform: scale(1.035);
+        }
+
+
+        /* =========================
+           NOTA
+        ========================= */
+
+        .nota {
+            background: #fff0b8;
+
+            border: 2px dashed var(--naranja);
+
+            padding: 22px;
+
+            border-radius: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================= */
+
+        footer {
+            background: var(--negro);
+
+            color: white;
+
+            text-align: center;
+
+            padding: 45px 20px;
+        }
+
+
+        footer strong {
+            color: var(--amarillo);
+        }
+
+
+        /* =========================
+           DISEÑO RESPONSIVO
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .intro,
+            .elementos,
+            .niveles {
+                grid-template-columns: 1fr;
+            }
+
+
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            nav a {
+                display: inline-block;
+
+                margin: 4px 7px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+
+
+            header {
+                min-height: 80vh;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         PORTADA
+    ========================== -->
+
+    <header id="inicio">
+
+        <div class="hero">
+
+            <div class="eyebrow">
+                Tradición • Memoria • Familia
+            </div>
+
+
+            <h1>
+                Día de<br>
+                Muertos
+            </h1>
+
+
+            <p>
+                Una celebración mexicana que honra la memoria de quienes
+                ya no están y transforma el recuerdo en color, aromas,
+                sabores y tradición.
+            </p>
+
+
+            <a class="btn" href="#ofrenda">
+                Conocer la ofrenda ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- Papel picado -->
+
+    <div class="papel"></div>
+
+
+    <!-- =========================
+         MENÚ
+    ========================== -->
+
+    <nav>
+
+        <a href="#inicio">
+            Inicio
+        </a>
+
+        <a href="#historia">
+            La celebración
+        </a>
+
+        <a href="#ofrenda">
+            La ofrenda
+        </a>
+
+        <a href="#elementos">
+            Elementos
+        </a>
+
+        <a href="#galeria">
+            Galería
+        </a>
+
+    </nav>
+
+
+    <main>
+
+
+        <!-- =========================
+             HISTORIA
+        ========================== -->
+
+        <section id="historia">
+
+            <div class="titulo">
+
+                <span>✦</span>
+
+                <h2>
+                    Una celebración de la memoria
+                </h2>
+
+            </div>
+
+
+            <div class="intro">
+
+
+                <div class="text-card">
+
+                    <p>
+
+                        El <strong>Día de Muertos</strong> es una tradición
+                        mexicana dedicada a recordar y honrar a las personas
+                        que han fallecido.
+
+                    </p>
+
+
+                    <p>
+
+                        Sus prácticas combinan elementos de distintas
+                        tradiciones indígenas con influencias culturales
+                        llegadas durante la época colonial.
+
+                    </p>
+
+
+                    <p>
+
+                        Durante estos días, las familias preparan altares
+                        u <strong>ofrendas</strong> con fotografías,
+                        alimentos, flores, veladoras y objetos relacionados
+                        con sus seres queridos.
+
+                    </p>
+
+
+                    <p>
+
+                        La celebración entiende la muerte como parte del
+                        ciclo de la vida y convierte el recuerdo en una
+                        expresión de cariño.
+
+                    </p>
+
+                </div>
+
+
+                <div class="card-img">
+
+                    <img
+                        src="muerte.jpg"
+                        alt="Decoración de Día de Muertos"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OFRENDA
+        ========================== -->
+
+        <section id="ofrenda">
+
+            <div class="titulo">
+
+                <span>🌼</span>
+
+                <h2>
+                    ¿Qué es una ofrenda?
+                </h2>
+
+            </div>
+
+
+            <div class="intro">
+
+
+                <div class="card-img">
+
+                    <img
+                        src="ofrenda.jpg"
+                        alt="Ofrenda de Día de Muertos"
+                    >
+
+                </div>
+
+
+                <div class="text-card">
+
+                    <p>
+
+                        La ofrenda es un espacio preparado para recibir
+                        simbólicamente a los seres queridos fallecidos.
+
+                    </p>
+
+
+                    <p>
+
+                        En ella se colocan objetos que representan la vida
+                        de la persona, alimentos que disfrutaba y distintos
+                        elementos tradicionales.
+
+                    </p>
+
+
+                    <p>
+
+                        No existe una única manera de construirla:
+                        puede cambiar según la región, la familia
+                        y sus costumbres.
+
+                    </p>
+
+
+                    <p>
+
+                        Lo importante es el significado que cada elemento
+                        tiene dentro del homenaje.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ELEMENTOS
+        ========================== -->
+
+        <section id="elementos">
+
+
+            <div class="titulo">
+
+                <span>✦</span>
+
+                <h2>
+                    Elementos de la ofrenda
+                </h2>
+
+                <p>
+                    Cada elemento aporta un significado particular.
+                </p>
+
+            </div>
+
+
+            <div class="elementos">
+
+
+                <!-- CEMPASÚCHIL -->
+
+                <article class="elemento">
+
+                    <img
+                        src="cempasuchil.jpg"
+                        alt="Flor de cempasúchil"
+                    >
+
+                    <div class="contenido">
+
+                        <span class="numero">
+                            1
+                        </span>
+
+                        <h3>
+                            Flor de cempasúchil
+                        </h3>
+
+                        <p>
+
+                            Su color intenso y su aroma son parte esencial
+                            de la decoración. Tradicionalmente se utiliza
+                            para adornar el altar y señalar el camino
+                            simbólico.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- VELADORAS -->
+
+                <article class="elemento">
+
+                    <img
+                        src="veladoras.jpg"
+                        alt="Veladoras"
+                    >
+
+                    <div class="contenido">
+
+                        <span class="numero">
+                            2
+                        </span>
+
+                        <h3>
+                            Veladoras
+                        </h3>
+
+                        <p>
+
+                            Representan la luz y se relacionan con la
+                            esperanza y la guía para las almas durante
+                            su visita simbólica.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- AGUA -->
+
+                <article class="elemento">
+
+                    <img
+                        src="agua.jpg"
+                        alt="Vaso de agua"
+                    >
+
+                    <div class="contenido">
+
+                        <span class="numero">
+                            3
+                        </span>
+
+                        <h3>
+                            Agua
+                        </h3>
+
+                        <p>
+
+                            Se coloca como símbolo de pureza y para ofrecer
+                            algo que calme la sed del visitante después de
+                            su largo recorrido.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAN -->
+
+                <article class="elemento">
+
+                    <img
+                        src="pan.jpg"
+                        alt="Pan de muerto"
+                    >
+
+                    <div class="contenido">
+
+                        <span class="numero">
+                            4
+                        </span>
+
+                        <h3>
+                            Pan de muerto
+                        </h3>
+
+                        <p>
+
+                            Es uno de los alimentos más representativos
+                            de la temporada y forma parte de muchas
+                            ofrendas familiares.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PAPEL PICADO -->
+
+                <article class="elemento">
+
+                    <img
+                        src="papel.jpg"
+                        alt="Papel picado"
+                    >
+
+                    <div class="contenido">
+
+                        <span class="numero">
+                            5
+                        </span>
+
+                        <h3>
+                            Papel picado
+                        </h3>
+
+                        <p>
+
+                            Sus diseños aportan color y movimiento.
+                            Sus figuras pueden representar escenas
+                            relacionadas con la vida y la muerte.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FOTOGRAFÍA -->
+
+                <article class="elemento">
+
+                    <img
+                        src="fotografia.jpg"
+                        alt="Fotografía en una ofrenda"
+                    >
+
+                    <div class="contenido">
+
+                        <span class="numero">
+                            6
+                        </span>
+
+                        <h3>
+                            Fotografía
+                        </h3>
+
+                        <p>
+
+                            Es una forma de identificar y recordar a la
+                            persona homenajeada, colocando su imagen en
+                            un lugar central del altar.
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- COMIDA -->
+
+                <article class="elemento">
+
+                    <img
+                        src="comida.jpg"
