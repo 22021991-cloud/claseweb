@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día de Muertos - Tradición, Eventos y Encuesta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1b1b 50%, #1a0a0a 100%);
+            color: #f5e6c8;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(90deg, #8B0000, #FF4500, #FFD700, #FF4500, #8B0000);
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #1a0a0a;
+            text-shadow: 2px 2px 4px rgba(255,215,0,0.5);
+            letter-spacing: 3px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #2d1b1b;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        nav {
+            background-color: #3d1f1f;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        nav a {
+            color: #FFD700;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF6347;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        section {
+            background-color: rgba(45, 27, 27, 0.9);
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        section h2 {
+            color: #FFD700;
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 10px;
+        }
+
+        .noticia img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 3px solid #8B0000;
+        }
+
+        .noticia p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .noticia .fecha {
+            color: #FF6347;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .evento {
+            background-color: rgba(139, 0, 0, 0.3);
+            border-left: 5px solid #FFD700;
+            padding: 18px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .evento h3 {
+            color: #FFD700;
+            margin-bottom: 8px;
+        }
+
+        .evento .detalle {
+            color: #FFA07A;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #FFD700;
+            font-size: 1.05rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select,
+        textarea {
+            padding: 12px 14px;
+            border: 2px solid #8B0000;
+            border-radius: 8px;
+            background-color: #2d1b1b;
+            color: #f5e6c8;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .opciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        .opcion {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(139, 0, 0, 0.25);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .opcion input {
+            accent-color: #FFD700;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .opcion label {
+            font-weight: 400;
+            color: #f5e6c8;
+            cursor: pointer;
+            font-size: 0.98rem;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(90deg, #8B0000, #FF4500);
+            color: #FFD700;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            align-self: center;
+            min-width: 220px;
+        }
+
+        button[type="submit"]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+        }
+
+        footer {
+            background-color: #1a0a0a;
+            text-align: center;
+            padding: 25px;
+            border-top: 3px solid #FFD700;
+            color: #FFA07A;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #FFD700;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+            nav a {
+                display: block;
+                margin: 8px 0;
+            }
+            .opciones {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>💀 Día de Muertos 💀</h1>
+        <p>Tradición, memoria y celebración de la vida</p>
+    </header>
+
+    <nav>
+        <a href="#noticia">Noticia</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#encuesta">Encuesta</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- ========== NOTICIA ========== -->
+        <section id="noticia" class="noticia">
+            <h2>📰 Noticia: México se prepara para el Día de Muertos 2026</h2>
+            <p class="fecha">Publicado el 28 de octubre de 2026</p>
+            
+            <p>
+                Con la llegada de noviembre, ciudades y pueblos de todo México se transforman con colores, 
+                aromas y ofrendas en honor a los seres queridos que han partido. Este año, el 
+                <strong>Día de Muertos</strong> promete ser especialmente emotivo, con festivales 
+                que combinan tradición ancestral y expresiones contemporáneas.
+            </p>
+            <p>
+                En la Ciudad de México, el desfile de Catrinas recorrerá el Paseo de la Reforma el 
+                1 de noviembre, mientras que en Oaxaca y Michoacán las comunidades indígenas 
+                preparan ofrendas monumentales y vigilias nocturnas en los cementerios. 
+                Las autoridades turísticas estiman la llegada de más de 2 millones de visitantes 
+                nacionales e internacionales durante estas fechas.
+            </p>
+            <p>
+                “El Día de Muertos no es una celebración de la muerte, sino de la vida y de la 
+                memoria”, recordó la secretaria de Cultura. “Es el momento en que las familias 
+                se reúnen para recordar, compartir y mantener viva la conexión con quienes ya no están”.
+            </p>
+            <p>
+                Entre las novedades de este año destacan recorridos virtuales de ofrendas, 
+                talleres de papel picado y una aplicación móvil que permite localizar altares 
+                públicos en tiempo real.
+            </p>
+        </section>
+
+        <!-- ========== EVENTOS ========== -->
+        <section id="eventos">
+            <h2>📅 Eventos del Día de Muertos</h2>
+
+            <div class="evento">
+                <h3>Desfile de Catrinas – Ciudad de México</h3>
+                <p class="detalle">📍 Paseo de la Reforma | 🗓️ 1 de noviembre | 🕖 16:00 hrs</p>
+                <p>El tradicional desfile con más de 3,000 participantes caracterizados como Catrinas y Catrines. Entrada gratuita.</p>
+            </div>
+
+            <div class="evento">
+                <h3>Noche de Muertos en Pátzcuaro, Michoacán</h3>
+                <p class="detalle">📍 Isla de Janitzio y alrededores del lago | 🗓️ 1 y 2 de noviembre | 🕖 Desde las 18:00 hrs</p>
+                <p>Vigilias nocturnas con velas, ofrendas flotantes y música tradicional purépecha. Una de las celebraciones más emblemáticas del país.</p>
+            </div>
+
+            <div class="evento">
+                <h3>Festival de las Almas – Valle de Bravo</h3>
+                <p class="detalle">📍 Centro histórico y laguna | 🗓️ 30 de octubre al 2 de noviembre</p>
+                <p>Conciertos, teatro, ofrendas artísticas, gastronomía y actividades para toda la familia. Incluye concurso de altares.</p>
+            </div>
+
+            <div class="evento">
+                <h3>Altares Monumentales – Zócalo CDMX</h3>
+                <p class="detalle">📍 Plaza de la Constitución | 🗓️ 28 de octubre al 3 de noviembre | 🕖 Todo el día</p>
+                <p>Exposición de ofrendas de gran formato creadas por artistas y colectivos. Acceso libre.</p>
+            </div>
+
+            <div class="evento">
+                <h3>Recorrido de Cementerios Iluminados – Oaxaca</h3>
+                <p class="detalle">📍 Varios panteones de la ciudad | 🗓️ 1 y 2 de noviembre | 🕖 19:00 – 23:00 hrs</p>
+                <p>Visitas guiadas con historias locales, música de viento y ofrendas familiares abiertas al público.</p>
+            </div>
+        </section>
+
+        <!-- ========== ENCUESTA ========== -->
+        <section id="encuesta">
+            <h2>📋 Encuesta: ¿Cómo vives el Día de Muertos?</h2>
+            <p style="margin-bottom: 20px;">
+                Ayúdanos a conocer más sobre las tradiciones y opiniones de la comunidad. 
+                Tu participación es anónima y muy valiosa.
+                <br><br>
+                <strong>Los campos marcados con * son obligatorios.</strong> 
+                El navegador validará automáticamente los datos antes de permitir el envío.
+            </p>
+
+            <!-- 
+                Conexión con Google Sheets mediante Webhook (Apps Script)
+                Método clásico: el formulario se envía directamente a la URL del script
+            -->
+            <form id="formulario-encuesta" 
+                  action="https://script.google.com/macros/s/AKfycbz8MzPSgYyl_GjDV2BriA2wJQWPOOFD7ZWPPGheiMOC5cwWGcxvp7LuR8I61sPEUzIGSg/exec" 
+                  method="POST" 
+                  target="_blank">
+
+                <!-- 1. Nombre (required + minlength/maxlength) -->
+                <div class="campo">
+                    <label for="nombre">1. Nombre completo: *</label>
+                    <input type="text" id="nombre" name="nombre" 
+                           placeholder="Ej: Ana Lucía Ramírez" 
+                           minlength="3" maxlength="60" required>
+                </div>
+
+                <!-- 2. Correo (type="email" + required) -->
+                <div class="campo">
+                    <label for="correo">2. Correo electrónico: *</label>
+                    <input type="email" id="correo" name="correo" 
+                           placeholder="tunombre@ejemplo.com" required>
+                </div>
+
+                <!-- 3. Edad (type="number" + min/max + required) -->
+                <div class="campo">
+                    <label for="edad">3. Edad: *</label>
+                    <input type="number" id="edad" name="edad" 
+                           min="12" max="99" placeholder="Ej: 22" required>
+                </div>
+
+                <!-- 3b. Fecha preferida para asistir a un evento (type="date") -->
+                <div class="campo">
+                    <label for="fecha_evento">Fecha preferida para asistir a un evento de Día de Muertos:</label>
+                    <input type="date" id="fecha_evento" name="fecha_evento"
+                           min="2026-10-28" max="2026-11-03">
+                </div>
+
+                <!-- 3c. Número de personas en la ofrenda (nuevo type="number" con min y max) -->
+                <div class="campo">
+                    <label for="num_personas">¿Cuántas personas suelen participar en tu ofrenda familiar?</label>
+                    <input type="number" id="num_personas" name="num_personas"
+                           min="1" max="30" placeholder="Ej: 5">
+                </div>
+
+                <!-- 4. ¿Celebras el Día de Muertos? (required en el grupo) -->
+                <div class="campo">
+                    <label>4. ¿Celebras el Día de Muertos en tu familia? *</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="celebra_si" name="celebra" value="si" required>
+                            <label for="celebra_si">Sí</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="celebra_no" name="celebra" value="no">
+                            <label for="celebra_no">No</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="celebra_a_veces" name="celebra" value="a_veces">
+                            <label for="celebra_a_veces">A veces</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. ¿Colocas ofrenda? -->
+                <div class="campo">
+                    <label>5. ¿Colocas una ofrenda en casa?</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="ofrenda_si" name="ofrenda" value="si">
+                            <label for="ofrenda_si">Sí</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="ofrenda_no" name="ofrenda" value="no">
+                            <label for="ofrenda_no">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Elementos de la ofrenda (checkbox) -->
+                <div class="campo">
+                    <label>6. ¿Qué elementos sueles incluir en tu ofrenda? (puedes marcar varios)</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_foto" name="elementos" value="foto">
+                            <label for="elem_foto">Fotografías</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_velas" name="elementos" value="velas">
+                            <label for="elem_velas">Velas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_cempasuchil" name="elementos" value="cempasuchil">
+                            <label for="elem_cempasuchil">Cempasúchil</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_pan" name="elementos" value="pan">
+                            <label for="elem_pan">Pan de muerto</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_comida" name="elementos" value="comida">
+                            <label for="elem_comida">Comida favorita del difunto</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_agua" name="elementos" value="agua">
+                            <label for="elem_agua">Agua</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_papel" name="elementos" value="papel">
+                            <label for="elem_papel">Papel picado</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="elem_calaveritas" name="elementos" value="calaveritas">
+                            <label for="elem_calaveritas">Calaveritas de azúcar</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Comida favorita -->
+                <div class="campo">
+                    <label for="comida">7. ¿Cuál es tu comida o dulce favorito de estas fechas?</label>
+                    <select id="comida" name="comida">
+                        <option value="">-- Selecciona una opción --</option>
+                        <option value="pan_muerto">Pan de muerto</option>
+                        <option value="calaveritas">Calaveritas de azúcar o chocolate</option>
+                        <option value="mole">Mole</option>
+                        <option value="tamales">Tamales</option>
+                        <option value="atole">Atole o champurrado</option>
+                        <option value="fruta">Fruta (naranja, caña, etc.)</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <!-- 8. ¿Visitas el cementerio? -->
+                <div class="campo">
+                    <label>8. ¿Visitas el cementerio durante el Día de Muertos?</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="cementerio_si" name="cementerio" value="si">
+                            <label for="cementerio_si">Sí, siempre</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="cementerio_a_veces" name="cementerio" value="a_veces">
+                            <label for="cementerio_a_veces">A veces</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="cementerio_no" name="cementerio" value="no">
+                            <label for="cementerio_no">Nunca</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Región / Estado -->
+                <div class="campo">
+                    <label for="estado">9. ¿En qué estado de la República resides?</label>
+                    <select id="estado" name="estado">
+                        <option value="">-- Selecciona tu estado --</option>
+                        <option value="cdmx">Ciudad de México</option>
+                        <option value="edo_mex">Estado de México</option>
+                        <option value="jalisco">Jalisco</option>
+                        <option value="nuevo_leon">Nuevo León</option>
+                        <option value="puebla">Puebla</option>
+                        <option value="oaxaca">Oaxaca</option>
+                        <option value="michoacan">Michoacán</option>
+                        <option value="yucatan">Yucatán</option>
+                        <option value="otro">Otro estado</option>
+                    </select>
+                </div>
+
+                <!-- 10. Importancia de la tradición -->
+                <div class="campo">
+                    <label>10. ¿Qué tan importante consideras mantener viva esta tradición?</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="import_1" name="importancia" value="1">
+                            <label for="import_1">1 - Poco</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="import_2" name="importancia" value="2">
+                            <label for="import_2">2</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="import_3" name="importancia" value="3">
+                            <label for="import_3">3 - Regular</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="import_4" name="importancia" value="4">
+                            <label for="import_4">4</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="import_5" name="importancia" value="5">
+                            <label for="import_5">5 - Muy importante</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. ¿Conoces el origen? -->
+                <div class="campo">
+                    <label>11. ¿Sabes cuál es el origen prehispánico del Día de Muertos?</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="origen_si" name="origen" value="si">
+                            <label for="origen_si">Sí, lo conozco bien</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="origen_algo" name="origen" value="algo">
+                            <label for="origen_algo">Sé un poco</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="origen_no" name="origen" value="no">
+                            <label for="origen_no">No lo conozco</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Modalidad de participación (radio - opciones excluyentes + required) -->
+                <div class="campo">
+                    <label>12. ¿En qué modalidad preferirías participar en los eventos de Día de Muertos? *</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="modalidad_presencial" name="modalidad" value="presencial" required>
+                            <label for="modalidad_presencial">Presencial</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="modalidad_virtual" name="modalidad" value="virtual">
+                            <label for="modalidad_virtual">Virtual / en línea</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="modalidad_hibrida" name="modalidad" value="hibrida">
+                            <label for="modalidad_hibrida">Híbrida</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. Actividades de interés (checkbox - selección múltiple) -->
+                <div class="campo">
+                    <label>13. ¿En cuáles de estas actividades te gustaría participar? (puedes marcar varias)</label>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="checkbox" id="act_taller_ofrendas" name="actividades" value="taller_ofrendas">
+                            <label for="act_taller_ofrendas">Taller de elaboración de ofrendas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="act_desfile" name="actividades" value="desfile">
+                            <label for="act_desfile">Desfile de Catrinas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="act_visita_cementerio" name="actividades" value="visita_cementerio">
+                            <label for="act_visita_cementerio">Visita guiada a cementerios</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="act_gastronomia" name="actividades" value="gastronomia">
+                            <label for="act_gastronomia">Degustación gastronómica</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="act_musica" name="actividades" value="musica">
+                            <label for="act_musica">Conciertos y música tradicional</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="checkbox" id="act_papel_picado" name="actividades" value="papel_picado">
+                            <label for="act_papel_picado">Taller de papel picado</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14. Tipo de evento preferido (select con opción guía + required) -->
+                <div class="campo">
+                    <label for="tipo_evento">14. ¿Qué tipo de evento de Día de Muertos te interesa más? *</label>
+                    <select id="tipo_evento" name="tipo_evento" required>
+                        <option value="">-- Selecciona una opción --</option>
+                        <option value="cultural">Evento cultural / artístico</option>
+                        <option value="religioso">Ceremonia o vigilia tradicional</option>
+                        <option value="familiar">Actividad familiar / infantil</option>
+                        <option value="gastronomico">Festival gastronómico</option>
+                        <option value="comunitario">Celebración comunitaria / vecinal</option>
+                    </select>
+                </div>
+
+                <!-- 15. Código de registro (pattern + required) -->
+                <div class="campo">
+                    <label for="codigo">15. Código de registro al evento (formato: DM + 4 números): *</label>
+                    <input type="text" id="codigo" name="codigo"
+                           placeholder="Ej: DM2026"
+                           pattern="DM[0-9]{4}"
+                           title="Formato esperado: DM seguido de 4 números, ejemplo: DM2026"
+                           minlength="6" maxlength="6"
+                           required>
+                </div>
+
+                <!-- 16. Contraseña de acceso (type="password") -->
+                <div class="campo">
+                    <label for="clave">16. Crea una contraseña de acceso al portal de resultados:</label>
+                    <input type="password" id="clave" name="clave"
+                           placeholder="Mínimo 6 caracteres"
+                           minlength="6" maxlength="20">
+                </div>
+
+                <!-- 17. Comentarios / Opinión (maxlength) -->
+                <div class="campo">
+                    <label for="comentarios">17. Comparte un recuerdo, opinión o sugerencia sobre el Día de Muertos:</label>
+                    <textarea id="comentarios" name="comentarios" rows="5" 
+                              maxlength="500"
+                              placeholder="Escribe aquí tu experiencia, un recuerdo familiar o lo que más te gusta de esta tradición... (máximo 500 caracteres)"></textarea>
+                </div>
+
+                <button type="submit">Enviar encuesta</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>💀 Página creada con fines educativos – Módulo de Formularios HTML</p>
+        <p>Tema: Día de Muertos | Tradición mexicana que une a vivos y muertos</p>
+        <p style="margin-top: 10px;">© 2026 – Ejercicio Integral</p>
+    </footer>
+
+    <script>
+        // El formulario se envía de forma clásica (action + method="POST")
+        // target="_blank" abre la respuesta del Apps Script en una pestaña nueva
+        // para que no se pierda la página de la encuesta.
+
+        document.getElementById("formulario-encuesta").addEventListener("submit", function() {
+            // Mostramos un mensaje y dejamos que el envío normal continúe
+            setTimeout(function() {
+                alert("✅ Datos enviados.\nRevisa tu hoja de Google Sheets y la pestaña nueva que se abrió.");
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
